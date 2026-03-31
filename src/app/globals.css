@@ -1,26 +1,139 @@
 @import "tailwindcss";
 
+@custom-variant tablet (@media (width >= 768px));
+@custom-variant landscape-tablet (@media (width >= 768px) and (orientation: landscape));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary: #0d3a12;
+  --color-primary-bright: #0f4415;
+  --color-accent: #1a6b26;
+  --color-sand: #e2d7ab;
+  --color-sand-muted: #d8ccb0;
+  --color-cream: #f7f6ec;
+  --color-cream-deep: #f1efc8;
+  --color-surface: rgba(255, 255, 255, 0.72);
+  --color-surface-solid: #faf9f3;
+  --foreground: #0a2f0f;
+  --foreground-muted: rgba(10, 47, 15, 0.58);
+  --ring-focus: rgba(15, 68, 21, 0.35);
+  --shadow-sm: 0 1px 2px rgba(13, 58, 18, 0.06);
+  --shadow-md: 0 4px 14px rgba(13, 58, 18, 0.08), 0 2px 4px rgba(13, 58, 18, 0.04);
+  --shadow-lg: 0 12px 40px rgba(13, 58, 18, 0.12), 0 4px 12px rgba(13, 58, 18, 0.06);
+  --shadow-dock: 0 -8px 32px rgba(13, 58, 18, 0.09), 0 16px 48px rgba(13, 58, 18, 0.08);
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
+  --color-background: var(--color-cream);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-sans-pos), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  background: var(--background);
+  min-height: 100dvh;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cream);
+  background-image:
+    radial-gradient(ellipse 120% 80% at 10% -10%, rgba(226, 215, 171, 0.45) 0%, transparent 55%),
+    radial-gradient(ellipse 90% 60% at 100% 0%, rgba(15, 68, 21, 0.07) 0%, transparent 50%),
+    radial-gradient(ellipse 70% 50% at 50% 100%, rgba(241, 239, 200, 0.8) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgba(15, 68, 21, 0.18);
+  color: var(--foreground);
+}
+
+@layer components {
+  .input-field {
+    width: 100%;
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(15, 68, 21, 0.12);
+    background: var(--color-surface-solid);
+    padding: 0.75rem 1rem;
+    color: var(--foreground);
+    box-shadow: var(--shadow-sm);
+  }
+  .input-field:focus {
+    border-color: var(--color-primary-bright);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--ring-focus);
+  }
+  .btn-primary {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-xl);
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #0f4415, #134919);
+    color: var(--color-cream-deep);
+    box-shadow: 0 8px 28px rgba(15, 68, 21, 0.3);
+    transition: filter 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover:not(:disabled) {
+    filter: brightness(1.06);
+  }
+  .btn-primary:disabled {
+    opacity: 0.5;
+    box-shadow: none;
+  }
+  .btn-secondary {
+    min-height: 48px;
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(15, 68, 21, 0.12);
+    background: var(--color-surface-solid);
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    font-weight: 600;
+    color: var(--foreground);
+  }
+}
+
+@layer utilities {
+  .tap-target {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  .surface-glass {
+    background: var(--color-surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+   
+  .text-balance {
+    text-wrap: balance;
+  }
+
+   
+  .shadow-float {
+    box-shadow: var(--shadow-lg);
+  }
+
+   
+  .shadow-dock {
+    box-shadow: var(--shadow-dock);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
