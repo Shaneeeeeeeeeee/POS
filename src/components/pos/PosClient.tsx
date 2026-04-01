@@ -335,8 +335,8 @@ export function PosClient({ products }: { products: Product[] }) {
   }
 
   return (
-    <div className="grid gap-4 landscape-tablet:grid-cols-[minmax(0,1fr)_minmax(320px,360px)] landscape-tablet:items-start landscape-tablet:gap-4.5">
-      <section className="min-w-0 rounded-[var(--radius-xl)] border border-[rgba(15,68,21,0.1)] bg-[var(--color-surface)] p-3 tablet:p-4">
+    <div className="grid gap-4 landscape-tablet:h-[calc(100dvh-7rem)] landscape-tablet:grid-cols-[minmax(0,1fr)_minmax(320px,360px)] landscape-tablet:items-start landscape-tablet:gap-4.5 landscape-tablet:overflow-hidden">
+      <section className="min-w-0 rounded-[var(--radius-xl)] border border-[rgba(15,68,21,0.1)] bg-[var(--color-surface)] p-3 tablet:p-4 landscape-tablet:flex landscape-tablet:min-h-0 landscape-tablet:flex-col">
         <div className="flex items-end justify-between gap-2">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--foreground-muted)]">
@@ -415,8 +415,8 @@ export function PosClient({ products }: { products: Product[] }) {
           ))}
         </div>
 
-        <div className="mt-2.5 rounded-[var(--radius-lg)] border border-[rgba(15,68,21,0.09)] bg-[rgba(255,255,255,0.65)] p-2.5 tablet:p-3">
-          <div className="grid max-h-[52dvh] grid-cols-2 gap-2.5 overflow-y-auto pr-1 tablet:max-h-[60dvh] tablet:grid-cols-3 tablet:gap-3">
+        <div className="mt-2.5 rounded-[var(--radius-lg)] border border-[rgba(15,68,21,0.09)] bg-[rgba(255,255,255,0.65)] p-2.5 tablet:p-3 landscape-tablet:flex landscape-tablet:min-h-0 landscape-tablet:flex-1 landscape-tablet:flex-col">
+          <div className="grid max-h-[52dvh] grid-cols-2 gap-2.5 overflow-y-auto pr-1 tablet:max-h-[60dvh] tablet:grid-cols-3 tablet:gap-3 landscape-tablet:min-h-0 landscape-tablet:max-h-none landscape-tablet:flex-1">
             {paginatedProducts.map((p) => (
               <button
                 key={p.id}
@@ -489,7 +489,7 @@ export function PosClient({ products }: { products: Product[] }) {
         </div>
       </section>
 
-      <aside className="flex min-h-[420px] min-w-0 flex-col overflow-hidden rounded-[var(--radius-xl)] border border-[rgba(15,68,21,0.1)] bg-[var(--color-surface)] p-3 landscape-tablet:sticky landscape-tablet:top-24 landscape-tablet:min-h-0 landscape-tablet:max-h-[calc(100dvh-11rem)] landscape-tablet:p-3.5">
+      <aside className="flex min-h-[420px] min-w-0 flex-col overflow-hidden rounded-[var(--radius-xl)] border border-[rgba(15,68,21,0.1)] bg-[var(--color-surface)] p-3 landscape-tablet:h-full landscape-tablet:min-h-0 landscape-tablet:p-3.5">
         <div className="flex items-center justify-between gap-2 border-b border-[rgba(15,68,21,0.08)] pb-3">
           <div>
             <p className="text-[10px] font-bold uppercase tracking-wider text-[var(--foreground-muted)]">
