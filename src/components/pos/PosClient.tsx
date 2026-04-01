@@ -335,7 +335,7 @@ export function PosClient({ products }: { products: Product[] }) {
   }
 
   return (
-    <div className="grid gap-4 landscape-tablet:h-[calc(100dvh-7rem)] landscape-tablet:grid-cols-[minmax(0,1fr)_minmax(320px,360px)] landscape-tablet:items-start landscape-tablet:gap-4.5 landscape-tablet:overflow-hidden">
+    <div className="grid gap-4 landscape-tablet:h-[calc(100dvh-14rem)] landscape-tablet:grid-cols-[minmax(0,1fr)_minmax(320px,360px)] landscape-tablet:items-start landscape-tablet:gap-4.5 landscape-tablet:overflow-hidden">
       <section className="min-w-0 rounded-[var(--radius-xl)] border border-[rgba(15,68,21,0.1)] bg-[var(--color-surface)] p-3 tablet:p-4 landscape-tablet:flex landscape-tablet:min-h-0 landscape-tablet:flex-col">
         <div className="flex items-end justify-between gap-2">
           <div>
